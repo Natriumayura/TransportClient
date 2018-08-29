@@ -31,7 +31,19 @@
 <div class="row">
   &nbsp;
 </div>
+<div class="col-md-6">
+  <p-autoComplete placeholder="Select Vehicle Category" [(ngModel)]="selectedVehicleCategory" [suggestions]="allVehicleCategories" (completeMethod)="getAllVehicleCategories()"
+                  [minLength]="1" field="vehicleCategoryDesc" [dropdown]="true" (onSelect)="vehicleCategorySelected($event)">
+              </p-autoComplete>
 
+</div>
+
+<div class="col-md-6">
+  <p-autoComplete placeholder="Select Vehicle" [(ngModel)]="selectedVehicle" [suggestions]="allVehicles" (completeMethod)="getAllVehicles()"
+                  [minLength]="1" field="vehicleNo" [dropdown]="true" (onSelect)="vehicleSelected($event)">
+              </p-autoComplete>
+
+</div>
 <!-- <div class="col-md-6">
     <div class = "row">
   <div class="col-md-12">
