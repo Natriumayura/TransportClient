@@ -31,6 +31,7 @@
 <div class="row">
   &nbsp;
 </div>
+<div class="row">
 <div class="col-md-6">
   <p-autoComplete placeholder="Select Vehicle Category" [(ngModel)]="selectedVehicleCategory" [suggestions]="allVehicleCategories" (completeMethod)="getAllVehicleCategories()"
                   [minLength]="1" field="vehicleCategoryDesc" [dropdown]="true" (onSelect)="vehicleCategorySelected($event)">
@@ -44,14 +45,47 @@
               </p-autoComplete>
 
 </div>
-<!-- <div class="col-md-6">
+</div>
+<div class="col-md-6">
     <div class = "row">
   <div class="col-md-12">
-    <button pButton type="button" label="Approve" value="3" (click)="approveRejectRequest($event)" >Approve</button> 
-  </div>
-  <div class="col-md-12">
-    <button pButton type="button" label="Reject"  value="5" (click)="approveRejectRequest($event)" >Reject</button> 
+    <button pButton type="button" label="Allocate" value="7" (click)="allocateRequest($event)" >Request Allocate</button> 
   </div>
 </div>
-</div> -->
+</div>
 <p-messages [(value)]="msgs"></p-messages>
+
+<div class="row">
+  &nbsp;
+</div>
+<h4>Allocated Vehicle Requests</h4>
+<div class="row">
+  &nbsp;
+</div>
+<div class="col-md-12">
+  <table >
+    <tr>
+      <th>Request No</th>
+      <th>Requested Date Time</th>
+      <th>Needed Date Time</th>
+      <th>Return Date Time</th>
+      <th>Approval Status</th>
+      <th>Purpose</th>
+      <th>Vehicle No</th>
+      <th>Vehicle Category</th>
+      <th>User</th>
+      <th></th>
+    </tr>
+    <tr  *ngFor="let listItem of allAllocatedReqs ;let j = index">
+      <td  align="left" >{{listItem.id}}</td>  
+      <td  align="left" >{{listItem.requestedDate}}</td> 
+      <td  align="left" >{{listItem.neededDateTime}}</td>  
+      <td  align="left" >{{listItem.returnDateTime}}</td> 
+      <td  align="left" >{{listItem.approvalStatus}}</td>  
+      <td  align="left" >{{listItem.customPurpose}}</td> 
+      <td  align="left" >{{listItem.vehicleNo}}</td>  
+      <td  align="left" >{{listItem.vehicleCategoryDesc}}</td>  
+      <td  align="left" >{{listItem.requestedUser}}</td>  
+    </tr>
+  </table>
+</div>

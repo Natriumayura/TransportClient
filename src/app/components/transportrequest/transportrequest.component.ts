@@ -4,6 +4,7 @@ import { AppGlobals} from '../../appglobal';
 import {Message} from 'primeng//api';
 import {MessageService} from 'primeng/api';
 import {Request} from '../../model/request';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -22,13 +23,28 @@ export class TransportrequestComponent implements OnInit {
   request : Request ;
   purposeId : number;
   result : string;
-  constructor(private transportrequestservice: transportRequestService, private appGlobals : AppGlobals,
+  constructor(private router:Router,private transportrequestservice: transportRequestService, private appGlobals : AppGlobals,
     private messageService: MessageService) { }
 
   ngOnInit() {
+    
+    this.appGlobals.currentPage='/transportrequest';
+    
     this.appGlobals.validateUser();
+    this.isAuthorized();
   }
 
+  isAuthorized(){
+    debugger;
+    var tt=this.appGlobals.permissionLevellight.includes(x => x == 1,0) ;
+
+
+    if(!(this.appGlobals.permissionLevellight.findIndex(x => x == 1)>-1 ||
+    this.appGlobals.permissionLevellight.findIndex(x=>x==2) >-1 ||
+    this.appGlobals.permissionLevellight.findIndex(x=>x==3) >-1)){
+      this.router.navigateByUrl('/accessdenied');
+    } 
+  }
 
 
   neededDateSelect(event : any){
@@ -43,7 +59,7 @@ export class TransportrequestComponent implements OnInit {
     if(diffInMs<=0){
       this.messageService.add({severity:'danger', summary:'Error', detail:'Return date time should be greater than the needed date time.'});
     }else{
-      this.messageService.add({severity:'danger', summary:'', detail:''});
+      //this.messageService.add({severity:'danger', summary:'', detail:''});
         let now = new Date();
         let requestUserId =this.appGlobals.permissionLevel[0].user.id;
        this.request = {

@@ -29,13 +29,15 @@ import {MessageService} from 'primeng/api';
 import { ManagerApprovalComponent } from './components/manager-approval/manager-approval.component';
 import { DivisionApprovalComponent } from './components/division-approval/division-approval.component';
 import { RequestVehicleAllocationComponent } from './components/request-vehicle-allocation/request-vehicle-allocation.component';
+import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent, pathMatch :'full'},
   { path: 'transportrequest', component: TransportrequestComponent, pathMatch :'full'},
   { path: 'managerapproval', component: ManagerApprovalComponent, pathMatch :'full'},
   { path: 'divisionapproval', component: DivisionApprovalComponent, pathMatch :'full'},
-  { path: 'requestvehicleallocation', component: RequestVehicleAllocationComponent, pathMatch :'full'}
+  { path: 'requestvehicleallocation', component: RequestVehicleAllocationComponent, pathMatch :'full'},
+  { path: 'accessdenied', component: AccessDeniedComponent, pathMatch :'full'}
 ]
 
 @NgModule({
@@ -45,7 +47,8 @@ const appRoutes: Routes = [
     TransportrequestComponent,
     ManagerApprovalComponent,
     DivisionApprovalComponent,
-    RequestVehicleAllocationComponent
+    RequestVehicleAllocationComponent,
+    AccessDeniedComponent
   ],
   imports: [
     //NgbModule,

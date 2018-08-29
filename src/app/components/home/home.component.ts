@@ -16,11 +16,25 @@ export class HomeComponent implements OnInit {
   }
   login(event : any){
     debugger;
-    this.homeservice.getPermissionLevel(this.username.trim()).subscribe(res=>{
-      this.appGlobals.permissionLevel = res;
-      if(res.length >0){
-        this.router.navigateByUrl('/transportrequest');
-      }
-    },error => console.error(error));
+    this.homeservice.getUserDetails(this.username.trim()).subscribe(result=>{
+      this.appGlobals.userdetails= result;
+      this.homeservice.getPermissionLevel(this.appGlobals.userdetails.userId).subscribe(res=>{
+        this.appGlobals.permissionLevel = res;
+        this.appGlobals.permissionLevellight= this.appGlobals.permissionLevel.map(function(p){
+          return p.permissionLevelId;
+        })
+        if(res.length >0){
+          if(this.appGlobals.currentPage!=""){
+          this.router.navigateByUrl(this.appGlobals.currentPage);
+          }else{
+            this.router.navigateByUrl(this.appGlobals.defRedirectPage);
+          }
+        }
+      },error => console.error(error));
+    })
+
+
+
+  
   }
 }

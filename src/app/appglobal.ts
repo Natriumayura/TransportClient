@@ -6,11 +6,15 @@ export class AppGlobals {
 
   }
   public permissionLevel : any[];
+  public permissionLevellight : any[];
+  public currentPage :string ="";
   public vehicleCategories : any[];
+  public userdetails:any="";
   public  baseAPIUrl:string = "http://localhost:59940/api/";
   public pendingApprovalManagerRequestStatus = 1;
   public pendingApprovalDivisionRequestStatus = 2;
   public ApprovedRequestStatus = 3;
+  public defRedirectPage = '/transportrequest';
 
   validateUser(){
     debugger;
@@ -18,6 +22,7 @@ export class AppGlobals {
       this.router.navigateByUrl('/home');
     }
   }
+
 
 
 }

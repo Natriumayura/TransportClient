@@ -9,10 +9,14 @@ import {AppGlobals} from '../appglobal';
   export class homeService {
     constructor(public httpClient: HttpClient,public appGlobals : AppGlobals) {
     }
-    getPermissionLevel(username:string){
+    getPermissionLevel(userid:number){
       debugger;
-      var url: string = this.appGlobals.baseAPIUrl  + 'UserPermissionLevelAllocation/GetPermissionAllocationsByUserName/'+username;
+      var url: string = this.appGlobals.baseAPIUrl  + 'UserPermissionLevelAllocation/GetPermissionAllocationsByUserId/'+userid;
     return this.httpClient.get<any[]>(url);
-
+      
+    }
+    getUserDetails(username : string){
+      var url: string = this.appGlobals.baseAPIUrl  + 'User/GetUserByUserName/'+username;
+      return this.httpClient.get<any[]>(url);
     }
 }

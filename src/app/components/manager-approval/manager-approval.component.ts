@@ -3,6 +3,7 @@ import { transportRequestService} from '../../services/transportrequest.service'
 import { AppGlobals} from '../../appglobal';
 import {Message} from 'primeng//api';
 import {MessageService} from 'primeng/api';
+import { Router } from '@angular/router';
 //mport {Request} from '../../model/request';
 
 @Component({
@@ -13,12 +14,22 @@ import {MessageService} from 'primeng/api';
 export class ManagerApprovalComponent implements OnInit {
 
 
-  constructor(private messageService : MessageService, private appGlobals: AppGlobals,private transportrequestservice : transportRequestService ) { }
+  constructor(private router:Router,private messageService : MessageService, private appGlobals: AppGlobals,private transportrequestservice : transportRequestService ) { }
   allReqs : any[] = [];
   selectedReqs : number[] = [];
   
   ngOnInit() {
+    this.appGlobals.currentPage='/managerapproval';
+    
+    this.appGlobals.validateUser();
+    this.isAuthorized();
     this.getPendingApprovalRequests();
+  }
+  isAuthorized(){
+    if(!(this.appGlobals.permissionLevel.findIndex(x=>x==2)>-1 ||
+    this.appGlobals.permissionLevel.findIndex(x=>x==3)>-1)){
+      this.router.navigateByUrl('/accessdenied');
+    } 
   }
   getPendingApprovalRequests(){
     this.transportrequestservice.getAllRequestsByStatus(this.appGlobals.pendingApprovalManagerRequestStatus).subscribe(result=>{
