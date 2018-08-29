@@ -1,0 +1,41 @@
+<h4>Request</h4>
+<div class="row">
+  <div class="col-md-4">
+    <div class="col-md-12">
+      <p>Needed Date Time :</p>
+    </div>
+    <div class="col-md-12">
+      <p>Return Date Time :</p>
+    </div>
+    <div class="col-md-12">
+      <p>Purpose :</p>
+    </div>
+    <div class="col-md-12">
+      <p>Purpose Desc :</p>
+    </div>
+    <div class="col-md-12">
+        <button pButton type="button" label="Login" (click)="submit($event)" >Submit Request</button> 
+      </div>
+    
+  </div>
+  <div class="col-md-4">
+    <div class="col-md-12">
+      <input [owlDateTimeTrigger]="dt" [owlDateTime]="dt" [(ngModel)]="neededDt">
+      <owl-date-time #dt ></owl-date-time>
+    </div>
+    <div class="col-md-12">
+      <input [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" [(ngModel)]="returnDt" >
+      <owl-date-time #dt1 (onSelect)="returnDateSelect($event)" ></owl-date-time>
+    </div>
+    <div class="col-md-12">
+        <p-autoComplete placeholder="Select Purpose" [(ngModel)]="selectedPurpose" [suggestions]="allPurposes" (completeMethod)="requestPuposes($event)"
+                        [minLength]="1" field="purposeDesc" [dropdown]="true" (onSelect)="purposeSelected($event)">
+                    </p-autoComplete>
+
+    </div>
+    <div class="col-md-12">
+        <input  type="text"  [(ngModel)]="cusPurpose" />
+    </div>
+  </div>
+</div>
+<p-messages [(value)]="msgs"></p-messages>

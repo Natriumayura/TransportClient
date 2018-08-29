@@ -1,0 +1,44 @@
+<h4>Manager Approval</h4>
+<div class="row">
+  &nbsp;
+</div>
+<div class="col-md-12">
+  <table >
+    <tr>
+      <th></th>
+      <th>Request No</th>
+      <th>Needed Date Time</th>
+      <th>Return Date Time</th>
+      <th>Purpose</th>
+      <th>Created Date</th>
+      <th>User</th>
+
+    </tr>
+    <tr  *ngFor="let listItem of allReqs ;let j = index">
+      <td  align="center">
+        <input type="checkbox"   id={{listItem.id}}    (change)="saveActionItems($event)" />
+      </td>
+      <td  align="left" >{{listItem.id}}</td>  
+      <td  align="left" >{{listItem.neededDateTime}}</td>  
+      <td  align="left" >{{listItem.returnDateTime}}</td>  
+      <td  align="left" >{{listItem.customPurpose}}</td> 
+      <td  align="left" >{{listItem.createdDateTime}}</td>  
+      <td  align="left" >{{listItem.user.name}}</td>  
+    </tr>
+  </table>
+</div>
+<div class="row">
+  &nbsp;
+</div>
+
+<div class="col-md-6">
+    <div class = "row">
+  <div class="col-md-12">
+    <button pButton type="button" label="Approve" value="2" (click)="approveRejectRequest($event)" >Approve</button> 
+  </div>
+  <div class="col-md-12">
+    <button pButton type="button" label="Reject"  value="4" (click)="approveRejectRequest($event)" >Reject</button> 
+  </div>
+</div>
+</div>
+<p-messages [(value)]="msgs"></p-messages>
