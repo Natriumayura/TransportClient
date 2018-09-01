@@ -37,11 +37,11 @@ export class TransportrequestComponent implements OnInit {
   isAuthorized(){
     debugger;
     var tt=this.appGlobals.permissionLevellight.includes(x => x == 1,0) ;
+    let managerpermission = this.appGlobals.permissionLevellight.findIndex(x => x == 2);
+    let divisionpermission = this.appGlobals.permissionLevellight.findIndex(x=>x==3);
+    let userpermission = this.appGlobals.permissionLevellight.findIndex(x=>x==1)
 
-
-    if(!(this.appGlobals.permissionLevellight.findIndex(x => x == 1)>-1 ||
-    this.appGlobals.permissionLevellight.findIndex(x=>x==2) >-1 ||
-    this.appGlobals.permissionLevellight.findIndex(x=>x==3) >-1)){
+    if(!(userpermission>-1 || divisionpermission>-1 || managerpermission>-1)){
       this.router.navigateByUrl('/accessdenied');
     } 
   }
@@ -61,7 +61,7 @@ export class TransportrequestComponent implements OnInit {
     }else{
       //this.messageService.add({severity:'danger', summary:'', detail:''});
         let now = new Date();
-        let requestUserId =this.appGlobals.permissionLevel[0].user.id;
+        let requestUserId =this.appGlobals.userdetails.id;
        this.request = {
         id : 0,
         requestBy : requestUserId,

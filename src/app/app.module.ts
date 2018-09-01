@@ -7,6 +7,7 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
 //3rd party
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { DropdownModule } from 'primeng/dropdown';
@@ -31,6 +32,7 @@ import { DivisionApprovalComponent } from './components/division-approval/divisi
 import { RequestVehicleAllocationComponent } from './components/request-vehicle-allocation/request-vehicle-allocation.component';
 import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
 
+
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent, pathMatch :'full'},
   { path: 'transportrequest', component: TransportrequestComponent, pathMatch :'full'},
@@ -48,7 +50,8 @@ const appRoutes: Routes = [
     ManagerApprovalComponent,
     DivisionApprovalComponent,
     RequestVehicleAllocationComponent,
-    AccessDeniedComponent
+    AccessDeniedComponent,
+
   ],
   imports: [
     //NgbModule,

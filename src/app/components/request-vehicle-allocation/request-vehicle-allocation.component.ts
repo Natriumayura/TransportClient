@@ -36,7 +36,11 @@ export class RequestVehicleAllocationComponent implements OnInit {
     this.getAllocatedRequests();
   }
   isAuthorized(){
-    if(!(this.appGlobals.permissionLevel.findIndex(x=>x==3>-1))){
+    let managerpermission = this.appGlobals.permissionLevellight.findIndex(x => x == 2);
+    let divisionpermission = this.appGlobals.permissionLevellight.findIndex(x=>x==3);
+    let userpermission = this.appGlobals.permissionLevellight.findIndex(x=>x==1)
+
+    if(!(divisionpermission>-1)){
       this.router.navigateByUrl('/accessdenied');
     } 
   }

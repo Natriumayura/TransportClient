@@ -3,4 +3,9 @@
 @import '~open-iconic/font/css/open-iconic-bootstrap.css';*/
 @import "~ng-pick-datetime/assets/style/picker.min.css";
 @import '~bootstrap/dist/css/bootstrap.min.css';
+@import "~bootstrap/dist/css/bootstrap.css";
+body{
+    padding-top: 80px;
+    padding-left: 20px;
+}
 

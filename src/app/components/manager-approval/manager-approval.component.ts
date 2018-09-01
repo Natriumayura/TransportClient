@@ -26,8 +26,11 @@ export class ManagerApprovalComponent implements OnInit {
     this.getPendingApprovalRequests();
   }
   isAuthorized(){
-    if(!(this.appGlobals.permissionLevel.findIndex(x=>x==2)>-1 ||
-    this.appGlobals.permissionLevel.findIndex(x=>x==3)>-1)){
+    let managerpermission = this.appGlobals.permissionLevellight.findIndex(x => x == 2);
+    let divisionpermission = this.appGlobals.permissionLevellight.findIndex(x=>x==3);
+    let userpermission = this.appGlobals.permissionLevellight.findIndex(x=>x==1)
+
+    if(!(divisionpermission>-1 || managerpermission>-1)){
       this.router.navigateByUrl('/accessdenied');
     } 
   }
