@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { transportRequestService} from '../../services/transportrequest.service';
-import { AppGlobals} from '../../appglobal';
+import { AppGlobals} from '../../app.global';
 import {Message} from 'primeng//api';
 import {MessageService} from 'primeng/api';
 import { Router } from '@angular/router';
@@ -14,15 +14,17 @@ import { Router } from '@angular/router';
 export class ManagerApprovalComponent implements OnInit {
 
 
-  constructor(private router:Router,private messageService : MessageService, private appGlobals: AppGlobals,private transportrequestservice : transportRequestService ) { }
-  allReqs : any[] = [];
-  selectedReqs : number[] = [];
-  
-  ngOnInit() {
+  constructor(private router:Router,private messageService : MessageService, private appGlobals: AppGlobals,private transportrequestservice : transportRequestService ) {
     this.appGlobals.currentPage='/managerapproval';
     
     this.appGlobals.validateUser();
     this.isAuthorized();
+   }
+  allReqs : any[] = [];
+  selectedReqs : number[] = [];
+  
+  ngOnInit() {
+    
     this.getPendingApprovalRequests();
   }
   isAuthorized(){

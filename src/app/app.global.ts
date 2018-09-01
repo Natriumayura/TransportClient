@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+
 @Injectable()
 export class AppGlobals {
   constructor(private router:Router){
 
   }
   public permissionLevel : any[];
+
   public permissionLevellight : any[];
   public currentPage :string ="";
   public vehicleCategories : any[];

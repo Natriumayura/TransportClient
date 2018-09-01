@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {AppGlobals} from '../appglobal';
+import {AppGlobals} from '../app.global';
 import {Request}  from '../model/request';
 import {Allocation}  from '../model/allocation';
 

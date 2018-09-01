@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { transportRequestService} from '../../services/transportrequest.service';
 import {vehicleAllocationService} from '../../services/vehicleallocation.service';
-import { AppGlobals} from '../../appglobal';
+import { AppGlobals} from '../../app.global';
 //import {Message} from 'primeng//api';
 import {MessageService} from 'primeng/api';
 import {Allocation} from '../../model/allocation';
 import { Router } from '@angular/router';
+import { debug } from 'util';
 @Component({
   selector: 'app-request-vehicle-allocation',
   templateUrl: './request-vehicle-allocation.component.html',
@@ -13,7 +14,13 @@ import { Router } from '@angular/router';
 })
 export class RequestVehicleAllocationComponent implements OnInit {
 
-  constructor(private router:Router,private messageService : MessageService, private appGlobals: AppGlobals,private transportrequestservice : transportRequestService,private vehicleallocationservice:vehicleAllocationService ) { }
+  constructor(private router:Router,private messageService : MessageService, private appGlobals: AppGlobals,private transportrequestservice : transportRequestService,private vehicleallocationservice:vehicleAllocationService ) {
+    debugger;
+    this.appGlobals.currentPage='/requestvehicleallocation';
+   
+    this.appGlobals.validateUser();
+    this.isAuthorized();
+   }
   allVehicles : any[] = [];
   allReqs : any[] = [];
   allAllocatedReqs : any[] = [];
@@ -23,10 +30,7 @@ export class RequestVehicleAllocationComponent implements OnInit {
   selectedReqs : any[]=[];
   allocateReq : Allocation
   ngOnInit() {
-    this.appGlobals.currentPage='/requestvehicleallocation';
    
-    this.appGlobals.validateUser();
-    this.isAuthorized();
    this.loadModules();
   }
   loadModules(){
@@ -95,7 +99,7 @@ export class RequestVehicleAllocationComponent implements OnInit {
         let index= this.selectedReqs.findIndex (x=>x == element);
         this.selectedReqs.splice(index,1);
         this.messageService.clear();
-        this.messageService.add({severity:'Success ', summary:'Success', detail:'Request(s) Allocated successfully.'});
+        this.messageService.add({severity:'Success ', summary:'', detail:'Request(s) Allocated successfully.'});
 
        // this.messageService.add({severity:'Success ', summary:'Success', detail:'Request/s updated successfully.'});
         if(this.selectedReqs.length==0){

@@ -25,7 +25,7 @@ import { HomeComponent } from './components/home/home.component';
 import { TransportrequestComponent } from './components/transportrequest/transportrequest.component';
 
 //SERVICES
-import { AppGlobals } from '../app/appglobal';
+import { AppGlobals } from '../app/app.global';
 import {MessageService} from 'primeng/api';
 import { ManagerApprovalComponent } from './components/manager-approval/manager-approval.component';
 import { DivisionApprovalComponent } from './components/division-approval/division-approval.component';

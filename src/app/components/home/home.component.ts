@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {homeService} from '../../services/home.services';
 import { Router } from '@angular/router';
-import { AppGlobals} from '../../appglobal';
+import { AppGlobals} from '../../app.global';
+
 
 @Component({
   selector: 'app-home',
@@ -16,8 +17,9 @@ export class HomeComponent implements OnInit {
   }
   login(event : any){
     debugger;
+
     this.homeservice.getUserDetails(this.username.trim()).subscribe(result=>{
-      this.appGlobals.userdetails= result;
+      this.appGlobals.userdetails = result;
       this.homeservice.getPermissionLevel(this.appGlobals.userdetails.userId).subscribe(res=>{
         this.appGlobals.permissionLevel = res;
         this.appGlobals.permissionLevellight= this.appGlobals.permissionLevel.map(function(p){

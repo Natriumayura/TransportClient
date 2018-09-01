@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="/home">Login <span class="sr-only">(current)</span></a>
+          <a class="nav-link" rou="/home">Login <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/transportrequest">Create Request</a>
@@ -20,6 +20,9 @@
           </li>
           <li class="nav-item">
             <a  class="nav-link" href="/requestvehicleallocation">Vehicle Allocation</a>
+          </li>
+          <li class="nav-item">
+           {{usrnm}}
           </li>
         <!-- <li class="nav-item">
           <a class="nav-link disabled" href="#">Disabled</a>
@@ -40,12 +43,12 @@
   </nav>
 
   <main role="main" class="container">
-
-    <div class="starter-template">
+    <router-outlet></router-outlet>
+    <!-- <div class="starter-template">
       
-    </div>
+    </div> -->
 
   </main>
-<router-outlet></router-outlet>
+
 
 

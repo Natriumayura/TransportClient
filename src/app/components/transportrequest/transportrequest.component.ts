@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { transportRequestService} from '../../services/transportrequest.service';
-import { AppGlobals} from '../../appglobal';
+import { AppGlobals} from '../../app.global';
 import {Message} from 'primeng//api';
 import {MessageService} from 'primeng/api';
 import {Request} from '../../model/request';
@@ -24,14 +24,16 @@ export class TransportrequestComponent implements OnInit {
   purposeId : number;
   result : string;
   constructor(private router:Router,private transportrequestservice: transportRequestService, private appGlobals : AppGlobals,
-    private messageService: MessageService) { }
-
-  ngOnInit() {
-    
-    this.appGlobals.currentPage='/transportrequest';
+    private messageService: MessageService) {
+      this.appGlobals.currentPage='/transportrequest';
     
     this.appGlobals.validateUser();
     this.isAuthorized();
+     }
+
+  ngOnInit() {
+    
+    
   }
 
   isAuthorized(){
